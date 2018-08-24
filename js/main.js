@@ -6,11 +6,13 @@ function pesquisarFilmes(e){
     buscarFilmes(filmePesquisa);
     
 }
+
 function buscarFilmes(filmePesquisa){
-    axios.get("http://www.omdbapi.com/?s=" + filmePesquisa)
+    var axios = require("axios")
+    axios.get("http://www.omdbapi.com/?apikey=[yourkey]&s=" + filmePesquisa)
   .then(function (response) {
       console.log(filmes)
-    var filmes = response.data.Search;
+    var filmes = "response.data.Search" ;
     var mostrarFilmes = "";
 
     for(var i = 0; i < filmes.length; i++){
@@ -32,6 +34,5 @@ function buscarFilmes(filmePesquisa){
 
 .catch(function(error){
     console.log(error);
-
 });
 }
